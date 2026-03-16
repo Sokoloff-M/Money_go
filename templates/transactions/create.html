@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Новая операция{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><i class="fas fa-plus"></i> Новая операция</h4>
+            </div>
+            <div class="card-body">
+                <form method="post" id="transactionForm">
+                    {% csrf_token %}
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form.date|as_crispy_field }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.status|as_crispy_field }}
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form.type|as_crispy_field }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.amount|as_crispy_field }}
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form.category|as_crispy_field }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.subcategory|as_crispy_field }}
+                        </div>
+                    </div>
+                    
+                    {{ form.comment|as_crispy_field }}
+                    
+                    <div class="d-flex justify-content-between mt-3">
+                        <a href="{% url 'transactions:list' %}" class="btn btn-secondary">
+                            <i class="fas fa-times"></i> Отмена
+                        </a>
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-save"></i> Сохранить
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    // Загрузка категорий при изменении типа
+    $('#id_type').change(function() {
+        var typeId = $(this).val();
+        if (typeId) {
+            $.ajax({
+                url: '{% url "transactions:get_categories" %}',
+                data: {type_id: typeId},
+                success: function(data) {
+                    var categorySelect = $('#id_category');
+                    categorySelect.empty();
+                    categorySelect.append('<option value="">---------</option>');
+                    $.each(data, function(key, value) {
+                        categorySelect.append('<option value="' + value.id + '">' + value.name + '</option>');
+                    });
+                }
+            });
+        } else {
+            $('#id_category').empty().append('<option value="">---------</option>');
+            $('#id_subcategory').empty().append('<option value="">---------</option>');
+        }
+    });
+    
+    // Загрузка подкатегорий при изменении категории
+    $('#id_category').change(function() {
+        var categoryId = $(this).val();
+        if (categoryId) {
+            $.ajax({
+                url: '{% url "transactions:get_subcategories" %}',
+                data: {category_id: categoryId},
+                success: function(data) {
+                    var subcategorySelect = $('#id_subcategory');
+                    subcategorySelect.empty();
+                    subcategorySelect.append('<option value="">---------</option>');
+                    $.each(data, function(key, value) {
+                        subcategorySelect.append('<option value="' + value.id + '">' + value.name + '</option>');
+                    });
+                }
+            });
+        } else {
+            $('#id_subcategory').empty().append('<option value="">---------</option>');
+        }
+    });
+});
+</script>
+{% endblock %}

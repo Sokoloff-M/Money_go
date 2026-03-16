@@ -1,0 +1,65 @@
+[
+    {
+        "model": "directories.category",
+        "pk": 1,
+        "fields": {
+            "name": "Инфраструктура",
+            "type": 2,
+            "order": 10
+        }
+    },
+    {
+        "model": "directories.category",
+        "pk": 2,
+        "fields": {
+            "name": "Маркетинг",
+            "type": 2,
+            "order": 20
+        }
+    },
+    {
+        "model": "directories.category",
+        "pk": 3,
+        "fields": {
+            "name": "Зарплата",
+            "type": 1,
+            "order": 10
+        }
+    },
+    {
+        "model": "directories.subcategory",
+        "pk": 1,
+        "fields": {
+            "name": "VPS",
+            "category": 1,
+            "order": 10
+        }
+    },
+    {
+        "model": "directories.subcategory",
+        "pk": 2,
+        "fields": {
+            "name": "Proxy",
+            "category": 1,
+            "order": 20
+        }
+    },
+    {
+        "model": "directories.subcategory",
+        "pk": 3,
+        "fields": {
+            "name": "Farpost",
+            "category": 2,
+            "order": 10
+        }
+    },
+    {
+        "model": "directories.subcategory",
+        "pk": 4,
+        "fields": {
+            "name": "Avito",
+            "category": 2,
+            "order": 20
+        }
+    }
+]

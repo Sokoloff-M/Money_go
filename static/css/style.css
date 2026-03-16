@@ -1,0 +1,50 @@
+/* Основные стили */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Стили для таблиц */
+.table th {
+    background-color: #343a40;
+    color: white;
+}
+
+/* Стили для карточек */
+.card {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: none;
+    margin-bottom: 20px;
+}
+
+.card-header {
+    font-weight: 600;
+}
+
+/* Стили для навигации */
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+/* Стили для кнопок */
+.btn {
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .table {
+        font-size: 0.9rem;
+    }
+}
+
+/* Стили для сумм */
+.text-success {
+    font-weight: 600;
+}
+
+.text-danger {
+    font-weight: 600;
+}

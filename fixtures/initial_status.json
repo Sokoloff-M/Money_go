@@ -1,0 +1,26 @@
+[
+    {
+        "model": "directories.status",
+        "pk": 1,
+        "fields": {
+            "name": "Бизнес",
+            "order": 10
+        }
+    },
+    {
+        "model": "directories.status",
+        "pk": 2,
+        "fields": {
+            "name": "Личное",
+            "order": 20
+        }
+    },
+    {
+        "model": "directories.status",
+        "pk": 3,
+        "fields": {
+            "name": "Налог",
+            "order": 30
+        }
+    }
+]

@@ -1,0 +1,12 @@
+/* Кастомные стили для админки */
+.field-amount {
+    font-weight: 600;
+}
+
+.field-amount.positive {
+    color: #28a745;
+}
+
+.field-amount.negative {
+    color: #dc3545;
+}

@@ -1,0 +1,18 @@
+[
+    {
+        "model": "directories.type",
+        "pk": 1,
+        "fields": {
+            "name": "Пополнение",
+            "order": 10
+        }
+    },
+    {
+        "model": "directories.type",
+        "pk": 2,
+        "fields": {
+            "name": "Списание",
+            "order": 20
+        }
+    }
+]

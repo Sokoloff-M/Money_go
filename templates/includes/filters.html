@@ -1,0 +1,63 @@
+{% load static %}
+<form method="get" class="row g-3">
+    <div class="col-md-3">
+        <label for="date_from" class="form-label">Дата с</label>
+        <input type="date" class="form-control" id="date_from" name="date_from" value="{{ filters.date_from }}">
+    </div>
+    <div class="col-md-3">
+        <label for="date_to" class="form-label">Дата по</label>
+        <input type="date" class="form-control" id="date_to" name="date_to" value="{{ filters.date_to }}">
+    </div>
+    <div class="col-md-2">
+        <label for="status" class="form-label">Статус</label>
+        <select class="form-select" id="status" name="status">
+            <option value="">Все</option>
+            {% for status in statuses %}
+                <option value="{{ status.id }}" {% if filters.status == status.id|stringformat:"s" %}selected{% endif %}>
+                    {{ status.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label for="type" class="form-label">Тип</label>
+        <select class="form-select" id="type" name="type">
+            <option value="">Все</option>
+            {% for type in types %}
+                <option value="{{ type.id }}" {% if filters.type == type.id|stringformat:"s" %}selected{% endif %}>
+                    {{ type.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label for="category" class="form-label">Категория</label>
+        <select class="form-select" id="category" name="category">
+            <option value="">Все</option>
+            {% for category in categories %}
+                <option value="{{ category.id }}" {% if filters.category == category.id|stringformat:"s" %}selected{% endif %}>
+                    {{ category.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-md-2">
+        <label for="subcategory" class="form-label">Подкатегория</label>
+        <select class="form-select" id="subcategory" name="subcategory">
+            <option value="">Все</option>
+            {% for subcategory in subcategories %}
+                <option value="{{ subcategory.id }}" {% if filters.subcategory == subcategory.id|stringformat:"s" %}selected{% endif %}>
+                    {{ subcategory.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-search"></i> Применить фильтры
+        </button>
+        <a href="{% url 'transactions:list' %}" class="btn btn-secondary">
+            <i class="fas fa-times"></i> Сбросить
+        </a>
+    </div>
+</form>
